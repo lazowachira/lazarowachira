@@ -11,9 +11,6 @@ Passionate about building scalable web applications with modern technologies. Cu
 **Database:** MySQL, MongoDB
 **Tools:** Git, Docker, Postman
 
-## 📊 GitHub Stats
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Lazowachira&show_icons=true&theme=default)
 
 ## 📫 Let's Connect
 
