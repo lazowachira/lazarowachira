@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Dark theme with vibrant accents */
+
+@layer base {
+  :root {
+    /* Dark Portfolio Theme */
+    --background: 223 25% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 223 25% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 25% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 223 25% 5%;
+
+    --secondary: 223 20% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 223 20% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 223 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 223 20% 15%;
+    --input: 223 20% 15%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Portfolio Specific Colors */
+    --frontend: 217 91% 60%;
+    --frontend-foreground: 223 25% 5%;
+    
+    --backend: 142 71% 45%;
+    --backend-foreground: 223 25% 5%;
+    
+    --tools: 271 81% 56%;
+    --tools-foreground: 223 25% 5%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(223 25% 5%) 0%, hsl(223 25% 8%) 50%, hsl(223 25% 5%) 100%);
+    --card-gradient: linear-gradient(135deg, hsl(223 20% 12%) 0%, hsl(223 25% 8%) 100%);
+    
+    /* Glows and Effects */
+    --glow-primary: 0 0 40px hsl(217 91% 60% / 0.3);
+    --glow-frontend: 0 0 30px hsl(217 91% 60% / 0.2);
+    --glow-backend: 0 0 30px hsl(142 71% 45% / 0.2);
+    --glow-tools: 0 0 30px hsl(271 81% 56% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
