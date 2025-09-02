@@ -54,8 +54,10 @@ const Hero = () => {
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Passionate about building scalable web applications with React,
-            Next.js, and Spring Boot.
+            Software Engineer focused on building scalable, high-performance web
+            applications. With expertise in React.js, Next.js, and Java Spring
+            Boot, I create intuitive frontends and resilient backends that
+            deliver real-life impact.
           </p>
 
           {/* CTA Buttons (native <button> so we can rule out Button component issues) */}
