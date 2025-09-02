@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -6,19 +6,19 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: 'https://github.com/Lazowachira',
-      label: 'GitHub'
+      href: "https://github.com/Lazowachira",
+      label: "GitHub",
     },
     {
       icon: Linkedin,
-      href: 'https://www.linkedin.com/in/lazarus-wachira-b2302230b/',
-      label: 'LinkedIn'
+      href: "https://www.linkedin.com/in/lazarus-wachira-b2302230b/",
+      label: "LinkedIn",
     },
     {
       icon: Mail,
-      href: 'mailto:lwachira742@gmail.com',
-      label: 'Email'
-    }
+      href: "mailto:lwachira742@gmail.com",
+      label: "Email",
+    },
   ];
 
   return (
@@ -31,7 +31,9 @@ const Footer = () => {
               <span className="text-accent">Lazarus</span>
               <span className="text-foreground"> Wachira</span>
             </h3>
-            <p className="text-muted-foreground mt-2">Full-Stack Software Engineer</p>
+            <p className="text-muted-foreground mt-2">
+              Full-Stack Software Engineer
+            </p>
           </div>
 
           {/* Social Links */}
@@ -52,13 +54,13 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => {
                   const element = document.getElementById(item.toLowerCase());
                   if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    element.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -71,7 +73,8 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center pt-6 border-t border-border w-full">
             <p className="text-muted-foreground text-sm flex items-center justify-center gap-2">
-              © {currentYear} Made with <Heart className="w-4 h-4 text-red-500" /> by Lazarus Wachira
+              © {currentYear} Made with{" "}
+              <Heart className="w-4 h-4 text-red-500" /> by Lazarus Wachira
             </p>
             <p className="text-muted-foreground text-xs mt-1">
               All rights reserved.

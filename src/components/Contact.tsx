@@ -1,26 +1,29 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -29,21 +32,32 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_565eamd",
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_bvn8yu4",
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "DWWqq_QwK96kRWSd4"
+      );
+
       toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon!",
       });
-      
+
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
+      console.error("EmailJS error:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -57,37 +71,37 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'lwachira742@gmail.com',
-      href: 'mailto:lwachira742@gmail.com'
+      label: "Email",
+      value: "lwachira742@gmail.com",
+      href: "mailto:lwachira742@gmail.com",
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+254 793 710 788',
-      href: 'tel:+254793710788'
+      label: "Phone",
+      value: "+254 793 710 788",
+      href: "tel:+254793710788",
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'Nairobi, Kenya',
-      href: null
-    }
+      label: "Location",
+      value: "Nairobi, Kenya",
+      href: null,
+    },
   ];
 
   const socialLinks = [
     {
       icon: Github,
-      label: 'GitHub',
-      href: 'https://github.com/Lazowachira',
-      color: 'hover:text-foreground'
+      label: "GitHub",
+      href: "https://github.com/Lazowachira",
+      color: "hover:text-foreground",
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/lazarus-wachira-b2302230b/',
-      color: 'hover:text-primary'
-    }
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/lazarus-wachira-b2302230b/",
+      color: "hover:text-primary",
+    },
   ];
 
   return (
@@ -99,18 +113,24 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Ready to work together? I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+            Ready to work together? I'd love to hear from you. Send me a message
+            and I'll respond as soon as possible.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <Card className="p-8 bg-card-gradient border-border animate-fade-in">
-            <h3 className="text-2xl font-bold text-foreground mb-6">Send Message</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6">
+              Send Message
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Name
                   </label>
                   <Input
@@ -125,7 +145,10 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Email
                   </label>
                   <Input
@@ -140,9 +163,12 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Subject
                 </label>
                 <Input
@@ -158,7 +184,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Message
                 </label>
                 <Textarea
@@ -177,7 +206,7 @@ const Contact = () => {
                 disabled={isSubmitting}
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Card>
@@ -185,7 +214,9 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8 animate-slide-in-left">
             <Card className="p-8 bg-card-gradient border-border">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-4">
                 {contactInfo.map((info) => (
                   <div key={info.label} className="flex items-center space-x-4">
@@ -193,7 +224,9 @@ const Contact = () => {
                       <info.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {info.label}
+                      </p>
                       {info.href ? (
                         <a
                           href={info.href}
@@ -211,7 +244,9 @@ const Contact = () => {
             </Card>
 
             <Card className="p-8 bg-card-gradient border-border">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Follow Me</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Follow Me
+              </h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <a
@@ -226,7 +261,8 @@ const Contact = () => {
                 ))}
               </div>
               <p className="text-muted-foreground mt-4">
-                Connect with me on social media for updates on my latest projects and tech insights.
+                Connect with me on social media for updates on my latest
+                projects and tech insights.
               </p>
             </Card>
           </div>
